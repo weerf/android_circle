@@ -23,6 +23,7 @@ public class CircleView   extends View
         float y = canvas.getHeight()/2;
         final RectF oval = new RectF();
 
+        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(25);
 
@@ -35,13 +36,17 @@ public class CircleView   extends View
         canvas.drawArc(oval, angle, 405-angle, false, paint);
 
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.GRAY);
 
-        float l = 1.2f;
+
+        float l = 1.3f;
+        float l1 = 1.2f;
+
         float a = angle*(float)Math.PI/180;
-        // Draw arrow
+        // Draw arrow 
         path.moveTo(x+ (float)Math.cos(a) *radius, y + (float)Math.sin(a) * radius);
         path.lineTo(x+ (float)Math.cos(a+0.1) *radius*l, y + (float)Math.sin(a+0.1) * radius*l);
+        path.lineTo(x+ (float)Math.cos(a) *radius*l1, y + (float)Math.sin(a) * radius*l1);
         path.lineTo(x+ (float)Math.cos(a-0.1) *radius*l, y + (float)Math.sin(a-0.1) * radius*l);
         path.lineTo(x+ (float)Math.cos(a) *radius, y + (float)Math.sin(a) * radius);
         canvas.drawPath(path, paint);
